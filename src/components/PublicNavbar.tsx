@@ -26,14 +26,12 @@ const PublicNavbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="bg-primary p-1 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <circle cx="12" cy="12" r="4"></circle>
-              </svg>
-            </div>
-            <span className="font-bold text-lg text-primary">Dial a Stocktaker</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/a0e238a9-2618-48d1-a66d-909fab2f2473.png" 
+              alt="Dial a Stocktaker" 
+              className="h-8 md:h-10"
+            />
           </Link>
           
           {/* Desktop Navigation */}

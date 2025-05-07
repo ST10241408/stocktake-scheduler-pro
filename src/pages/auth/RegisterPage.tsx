@@ -52,7 +52,15 @@ const RegisterPage = () => {
     setIsLoading(true);
     
     try {
-      await register(formData.email, formData.password, formData.firstName, formData.lastName);
+      // Fix: Use register with just email and password, as per the expected arguments
+      await register({
+        email: formData.email,
+        password: formData.password,
+        userData: {
+          firstName: formData.firstName,
+          lastName: formData.lastName
+        }
+      });
       toast({
         title: "Registration successful",
         description: "Welcome to Dial a Stocktaker! You can now log in.",

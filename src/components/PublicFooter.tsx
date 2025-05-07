@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
@@ -9,14 +8,12 @@ const PublicFooter = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="bg-primary p-1 rounded">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                  <circle cx="12" cy="12" r="4"></circle>
-                </svg>
-              </div>
-              <span className="font-bold text-lg text-white">Dial a Stocktaker</span>
+            <Link to="/" className="flex items-center mb-4">
+              <img 
+                src="/lovable-uploads/a0e238a9-2618-48d1-a66d-909fab2f2473.png" 
+                alt="Dial a Stocktaker" 
+                className="h-10"
+              />
             </Link>
             <p className="text-gray-400 mb-4">
               Professional stocktaking services for businesses of all sizes. Accurate, efficient, and reliable.

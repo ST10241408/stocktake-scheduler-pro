@@ -19,7 +19,7 @@ const ProfilePage = () => {
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
     email: user?.email || "",
-    phone: user?.phone || ""
+    phone: user?.phoneNumber || "" // Changed from phone to phoneNumber
   });
 
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -108,7 +108,7 @@ const ProfilePage = () => {
           </CardHeader>
           <CardContent className="flex flex-col items-center text-center pt-2">
             <Avatar className="w-24 h-24">
-              <AvatarImage src={user?.avatar} />
+              <AvatarImage src={user?.profileImage} /> {/* Changed from avatar to profileImage */}
               <AvatarFallback className="text-2xl bg-primary/10">
                 {user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
               </AvatarFallback>
