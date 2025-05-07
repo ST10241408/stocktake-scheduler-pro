@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -15,11 +14,11 @@ const ProfilePage = () => {
   const { user } = useAuth();
   const { toast } = useToast();
 
-  const [personalInfo, setPersonalInfo] = useState({
+  const [formData, setFormData] = useState({
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
     email: user?.email || "",
-    phone: user?.phoneNumber || "" // Changed from phone to phoneNumber
+    phone: user?.phone || "" // Using the correct property name from User type
   });
 
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -34,7 +33,7 @@ const ProfilePage = () => {
 
   const handlePersonalInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setPersonalInfo(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +43,7 @@ const ProfilePage = () => {
 
   const handleUpdateProfile = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Updating profile with:", personalInfo);
+    console.log("Updating profile with:", formData);
     
     // Simulate API call
     setTimeout(() => {
@@ -108,7 +107,7 @@ const ProfilePage = () => {
           </CardHeader>
           <CardContent className="flex flex-col items-center text-center pt-2">
             <Avatar className="w-24 h-24">
-              <AvatarImage src={user?.profileImage} /> {/* Changed from avatar to profileImage */}
+              <AvatarImage src={user?.avatar} /> {/* Using the correct property name from User type */}
               <AvatarFallback className="text-2xl bg-primary/10">
                 {user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
               </AvatarFallback>
@@ -171,7 +170,7 @@ const ProfilePage = () => {
                         <Input 
                           id="firstName"
                           name="firstName"
-                          value={personalInfo.firstName}
+                          value={formData.firstName}
                           onChange={handlePersonalInfoChange}
                         />
                       </div>
@@ -180,7 +179,7 @@ const ProfilePage = () => {
                         <Input 
                           id="lastName"
                           name="lastName"
-                          value={personalInfo.lastName}
+                          value={formData.lastName}
                           onChange={handlePersonalInfoChange}
                         />
                       </div>
@@ -192,7 +191,7 @@ const ProfilePage = () => {
                         id="email"
                         name="email"
                         type="email"
-                        value={personalInfo.email}
+                        value={formData.email}
                         onChange={handlePersonalInfoChange}
                         disabled
                       />
@@ -206,7 +205,7 @@ const ProfilePage = () => {
                       <Input 
                         id="phone"
                         name="phone"
-                        value={personalInfo.phone || ""}
+                        value={formData.phone || ""}
                         onChange={handlePersonalInfoChange}
                         placeholder="Your phone number"
                       />
