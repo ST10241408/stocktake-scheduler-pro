@@ -82,16 +82,22 @@ const AboutPage = () => {
                 name: "Jane Smith",
                 role: "CEO & Founder",
                 bio: "With over 15 years of experience in inventory management, Jane founded Dial a Stocktaker to address the unmet needs of businesses struggling with inventory control."
+             img: "https://i.pinimg.com/736x/0e/bd/b9/0ebdb9f8cb628dc5224bd2f84a2ff9e2.jpg"
+              
               },
               {
                 name: "Michael Brown",
                 role: "Operations Director",
                 bio: "Michael oversees our daily operations, ensuring that our teams deliver consistent, high-quality service to every client."
+            img: "https://i.pinimg.com/736x/0e/bd/b9/0ebdb9f8cb628dc5224bd2f84a2ff9e2.jpg"
+               
               },
               {
                 name: "Sarah Johnson",
                 role: "Client Relations Manager",
                 bio: "Sarah works directly with our clients to understand their unique needs and develop tailored stocktaking solutions."
+              img: "https://i.pinimg.com/736x/0e/bd/b9/0ebdb9f8cb628dc5224bd2f84a2ff9e2.jpg"
+              
               }
             ].map((member, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-lg text-center">
