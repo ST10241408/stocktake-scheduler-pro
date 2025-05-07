@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,8 +26,10 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: '#E23D28', // Tomato paste red
+					foreground: '#FFFFFF',
+					hover: '#C43122', // Darker shade of primary
+					light: '#F87B6E', // Lighter shade of primary
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -55,12 +58,18 @@ export default {
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+					primary: '#E23D28', // Tomato paste red
+					'primary-foreground': '#FFFFFF',
 					accent: 'hsl(var(--sidebar-accent))',
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for our application
+				brand: {
+					red: '#E23D28', // Tomato paste red (primary)
+					darkGray: '#333333',
+					lightGray: '#F5F5F5',
 				}
 			},
 			borderRadius: {
