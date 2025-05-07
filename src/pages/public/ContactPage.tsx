@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -90,7 +91,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-gray-600">+1 (800) 123-4567</p>
+                    <p className="text-gray-600">011 403 2996</p>
                   </div>
                 </div>
                 
@@ -111,9 +112,10 @@ const ContactPage = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Address</h3>
                     <p className="text-gray-600">
-                      123 Business Avenue<br />
-                      Suite 456<br />
-                      Cityville, ST 12345
+                      Ground Floor, Known as - Braamfontein Centre,<br />
+                      Rosebank College Building,<br />
+                      23 Jorissen St, Braamfontein,<br />
+                      Johannesburg, 2017
                     </p>
                   </div>
                 </div>
@@ -130,6 +132,49 @@ const ContactPage = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+              
+              {/* Team Members Section */}
+              <div className="mt-10">
+                <h3 className="text-xl font-semibold mb-6">Meet Our Team</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {[
+                    {
+                      name: "Jane Smith",
+                      position: "Customer Relations",
+                      image: "https://i.pinimg.com/736x/0e/bd/b9/0ebdb9f8cb628dc5224bd2f84a2ff9e2.jpg"
+                    },
+                    {
+                      name: "Michael Brown",
+                      position: "Operations Manager",
+                      image: "https://i.pinimg.com/736x/0e/bd/b9/0ebdb9f8cb628dc5224bd2f84a2ff9e2.jpg"
+                    },
+                    {
+                      name: "Sarah Johnson",
+                      position: "Inventory Specialist",
+                      image: "https://i.pinimg.com/736x/0e/bd/b9/0ebdb9f8cb628dc5224bd2f84a2ff9e2.jpg"
+                    }
+                  ].map((member, index) => (
+                    <div key={index} className="text-center">
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        className="w-24 h-24 rounded-full mx-auto object-cover"
+                      />
+                      <h4 className="font-semibold mt-2">{member.name}</h4>
+                      <p className="text-sm text-gray-600">{member.position}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Company Image */}
+              <div className="mt-10">
+                <img 
+                  src="https://i.pinimg.com/736x/46/02/ae/4602aef9d8f43d6c8007d617b29db38d.jpg" 
+                  alt="Company Office" 
+                  className="w-full h-auto rounded-lg"
+                />
               </div>
             </div>
             

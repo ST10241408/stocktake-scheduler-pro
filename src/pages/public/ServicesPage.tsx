@@ -174,7 +174,7 @@ const ServicesPage = () => {
           <p className="text-white/90 mb-8 max-w-2xl mx-auto">
             Contact us today for a free consultation and quote
           </p>
-          <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
+          <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 hover:bg-brand-lightGray">
             <Link to="/contact">Contact Us</Link>
           </Button>
         </div>
