@@ -16,7 +16,7 @@ const ServicesPage = () => {
         "Variance analysis",
         "Recommendations for stock optimization"
       ],
-      price: "Starting from $499",
+      price: "Starting from R499",
       popular: true
     },
     {
@@ -28,7 +28,7 @@ const ServicesPage = () => {
         "Accuracy verification",
         "Discrepancy identification"
       ],
-      price: "Starting from $299",
+      price: "Starting from R299",
       popular: false
     },
     {
@@ -40,7 +40,7 @@ const ServicesPage = () => {
         "Trend analysis reports",
         "Continuous improvement recommendations"
       ],
-      price: "Starting from $399/month",
+      price: "Starting from R399/month",
       popular: false
     }
   ];
