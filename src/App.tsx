@@ -27,6 +27,13 @@ import JobsPage from "./pages/dashboard/JobsPage";
 import UsersPage from "./pages/dashboard/UsersPage";
 import ProfilePage from "./pages/dashboard/ProfilePage";
 
+// New pages for various roles
+import SettingsPage from "./pages/dashboard/SettingsPage";
+import BookPage from "./pages/dashboard/client/BookPage";
+import ReportsPage from "./pages/dashboard/supervisor/ReportsPage";
+import MessagesPage from "./pages/dashboard/receptionist/MessagesPage";
+import BookingsPage from "./pages/dashboard/receptionist/BookingsPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -50,12 +57,26 @@ const App = () => (
             
             {/* Dashboard Routes */}
             <Route path="/dashboard" element={<DashboardLayout />}>
+              {/* Admin routes */}
               <Route index element={<AdminDashboard />} />
-              <Route path="client" element={<ClientDashboard />} />
+              <Route path="settings" element={<SettingsPage />} />
+              <Route path="users" element={<UsersPage />} />
+              
+              {/* Common routes */}
               <Route path="clients" element={<ClientsPage />} />
               <Route path="jobs" element={<JobsPage />} />
-              <Route path="users" element={<UsersPage />} />
               <Route path="profile" element={<ProfilePage />} />
+              
+              {/* Client routes */}
+              <Route path="client" element={<ClientDashboard />} />
+              <Route path="book" element={<BookPage />} />
+              
+              {/* Supervisor routes */}
+              <Route path="reports" element={<ReportsPage />} />
+              
+              {/* Receptionist routes */}
+              <Route path="messages" element={<MessagesPage />} />
+              <Route path="bookings" element={<BookingsPage />} />
             </Route>
             
             {/* Catch-all route */}

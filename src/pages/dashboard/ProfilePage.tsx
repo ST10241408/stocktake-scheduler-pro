@@ -18,7 +18,7 @@ const ProfilePage = () => {
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
     email: user?.email || "",
-    phone: user?.phone || "" // Using the correct property name from User type
+    phone: user?.phone || "" // Using phone instead of phoneNumber
   });
 
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -107,7 +107,7 @@ const ProfilePage = () => {
           </CardHeader>
           <CardContent className="flex flex-col items-center text-center pt-2">
             <Avatar className="w-24 h-24">
-              <AvatarImage src={user?.avatar} /> {/* Using the correct property name from User type */}
+              <AvatarImage src={user?.avatar} /> {/* Using avatar instead of profileImage */}
               <AvatarFallback className="text-2xl bg-primary/10">
                 {user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
               </AvatarFallback>
