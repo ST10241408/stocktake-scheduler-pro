@@ -310,12 +310,6 @@ const ServicesPage = () => {
                 <p>The agreed rate together with our terms and conditions of service will be sent to you for confirmation.</p>
               </li>
             </ol>
-            
-            <div className="mt-8">
-              <Link to="/contact" className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground h-10 py-2 px-4 hover:bg-primary/90">
-                Request a Quote
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -336,21 +330,6 @@ const ServicesPage = () => {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-            Ready to get started?
-          </h2>
-          <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-            Contact us today for a free consultation and quote
-          </p>
-          <Link to="/contact" className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-white text-primary h-10 py-2 px-8 text-base hover:bg-white/90">
-            Contact Us
-          </Link>
         </div>
       </section>
       

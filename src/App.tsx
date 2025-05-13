@@ -14,10 +14,6 @@ import ContactPage from "./pages/public/ContactPage";
 import FaqPage from "./pages/public/FaqPage";
 import NotFound from "./pages/NotFound";
 
-// Auth pages
-import LoginPage from "./pages/auth/LoginPage";
-import RegisterPage from "./pages/auth/RegisterPage";
-
 // Dashboard pages
 import DashboardLayout from "./layouts/DashboardLayout";
 import AdminDashboard from "./pages/dashboard/admin/AdminDashboard";
@@ -50,10 +46,6 @@ const App = () => (
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FaqPage />} />
-            
-            {/* Auth Routes */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
             
             {/* Dashboard Routes */}
             <Route path="/dashboard" element={<DashboardLayout />}>

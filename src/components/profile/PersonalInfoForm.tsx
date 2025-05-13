@@ -1,95 +1,119 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/context/AuthContext";
 
-const PersonalInfoForm = () => {
-  const { user } = useAuth();
+interface PersonalInfoFormProps {
+  user: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone?: string; // Make phone optional
+    role: string;
+    createdAt: string;
+  };
+  onSubmit: (values: any) => void;
+}
+
+const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ user, onSubmit }) => {
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone || "");
+  const [isEditing, setIsEditing] = useState(false);
   const { toast } = useToast();
 
-  const [formData, setFormData] = useState({
-    firstName: user?.firstName || "",
-    lastName: user?.lastName || "",
-    email: user?.email || "",
-    phone: user?.phone as string || ""  // Added type assertion
-  });
-
-  const handlePersonalInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleUpdateProfile = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Updating profile with:", formData);
-    
-    // Simulate API call
-    setTimeout(() => {
-      toast({
-        title: "Profile updated",
-        description: "Your profile information has been updated successfully."
-      });
-    }, 1000);
+    const values = {
+      firstName,
+      lastName,
+      email,
+      phone,
+    };
+    onSubmit(values);
+    setIsEditing(false);
+    toast({
+      title: "Profile updated successfully",
+      description: "Your personal information has been updated.",
+    });
   };
 
   return (
-    <form onSubmit={handleUpdateProfile}>
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
+    <Card>
+      <CardHeader>
+        <CardTitle>Personal Information</CardTitle>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        <form onSubmit={handleSubmit}>
+          <div className="grid gap-2">
             <Label htmlFor="firstName">First Name</Label>
-            <Input 
+            <Input
               id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handlePersonalInfoChange}
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              disabled={!isEditing}
             />
           </div>
-          <div className="space-y-2">
+          <div className="grid gap-2">
             <Label htmlFor="lastName">Last Name</Label>
-            <Input 
+            <Input
               id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handlePersonalInfoChange}
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              disabled={!isEditing}
             />
           </div>
-        </div>
-        
-        <div className="space-y-2">
-          <Label htmlFor="email">Email Address</Label>
-          <Input 
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handlePersonalInfoChange}
-            disabled
-          />
-          <p className="text-xs text-gray-500">
-            Email addresses cannot be changed. Contact admin for assistance.
-          </p>
-        </div>
-        
-        <div className="space-y-2">
-          <Label htmlFor="phone">Phone Number (optional)</Label>
-          <Input 
-            id="phone"
-            name="phone"
-            value={formData.phone || ""}
-            onChange={handlePersonalInfoChange}
-            placeholder="Your phone number"
-          />
-        </div>
-        
-        <Button type="submit" className="mt-2">
-          Save Changes
-        </Button>
-      </div>
-    </form>
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={!isEditing}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="phone">Phone Number</Label>
+            <Input
+              id="phone"
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              disabled={!isEditing}
+            />
+          </div>
+          <div className="flex justify-end mt-4">
+            {isEditing ? (
+              <>
+                <Button
+                  variant="ghost"
+                  onClick={() => {
+                    setIsEditing(false);
+                    setFirstName(user.firstName);
+                    setLastName(user.lastName);
+                    setEmail(user.email);
+                    setPhone(user.phone || "");
+                  }}
+                  className="mr-2"
+                >
+                  Cancel
+                </Button>
+                <Button type="submit">Save Changes</Button>
+              </>
+            ) : (
+              <Button onClick={() => setIsEditing(true)}>Edit Profile</Button>
+            )}
+          </div>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 

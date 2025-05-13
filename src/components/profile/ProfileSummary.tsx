@@ -1,9 +1,20 @@
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@/context/AuthContext";
 import { CheckCircle2 } from "lucide-react";
+
+interface ProfileSummaryProps {
+  user: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    role: string;
+    avatar?: string; // Make avatar optional
+    createdAt: string;
+  };
+}
 
 const ProfileSummary = () => {
   const { user } = useAuth();
