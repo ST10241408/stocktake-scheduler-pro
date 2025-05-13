@@ -11,7 +11,7 @@ const ProfileSummary = () => {
   return (
     <div className="flex flex-col items-center text-center pt-2">
       <Avatar className="w-24 h-24">
-        <AvatarImage src={user?.avatar} />
+        <AvatarImage src={user?.avatar as string} />
         <AvatarFallback className="text-2xl bg-primary/10">
           {user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
         </AvatarFallback>

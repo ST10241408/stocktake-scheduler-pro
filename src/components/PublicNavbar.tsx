@@ -41,7 +41,9 @@ const PublicNavbar = () => {
                 key={link.name}
                 to={link.path}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive(link.path)
+                  link.name === "Services" 
+                  ? "bg-primary text-white hover:bg-primary/90" 
+                  : isActive(link.path)
                     ? "text-primary"
                     : "text-gray-700 hover:text-primary"
                 }`}
@@ -91,7 +93,9 @@ const PublicNavbar = () => {
                   key={link.name}
                   to={link.path}
                   className={`px-3 py-2 rounded-md text-sm font-medium ${
-                    isActive(link.path)
+                    link.name === "Services" 
+                    ? "bg-primary text-white" 
+                    : isActive(link.path)
                       ? "bg-primary/10 text-primary"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
