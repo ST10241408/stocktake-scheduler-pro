@@ -42,7 +42,7 @@ const PublicNavbar = () => {
                 to={link.path}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   link.name === "Services" 
-                  ? "bg-primary text-white hover:bg-primary/80" 
+                  ? "bg-red-600 text-white hover:bg-red-700" 
                   : isActive(link.path)
                     ? "text-primary"
                     : "text-gray-700 hover:text-primary"
@@ -55,10 +55,22 @@ const PublicNavbar = () => {
           
           {/* Login/Dashboard Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            {isAuthenticated && (
+            {isAuthenticated ? (
               <Button onClick={() => navigate("/dashboard")}>
                 Dashboard
               </Button>
+            ) : (
+              <>
+                <Button 
+                  variant="ghost" 
+                  onClick={() => navigate("/login")}
+                >
+                  Log In
+                </Button>
+                <Button onClick={() => navigate("/register")}>
+                  Register
+                </Button>
+              </>
             )}
           </div>
           
@@ -85,7 +97,7 @@ const PublicNavbar = () => {
                   to={link.path}
                   className={`px-3 py-2 rounded-md text-sm font-medium ${
                     link.name === "Services" 
-                    ? "bg-primary text-white" 
+                    ? "bg-red-600 text-white" 
                     : isActive(link.path)
                       ? "bg-primary/10 text-primary"
                       : "text-gray-700 hover:bg-gray-50"
@@ -97,13 +109,33 @@ const PublicNavbar = () => {
               ))}
               
               <div className="pt-4 flex flex-col space-y-2 border-t mt-2">
-                {isAuthenticated && (
+                {isAuthenticated ? (
                   <Button onClick={() => {
                     navigate("/dashboard");
                     setIsMenuOpen(false);
                   }}>
                     Dashboard
                   </Button>
+                ) : (
+                  <>
+                    <Button 
+                      variant="outline"
+                      onClick={() => {
+                        navigate("/login");
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      Log In
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        navigate("/register");
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      Register
+                    </Button>
+                  </>
                 )}
               </div>
             </nav>

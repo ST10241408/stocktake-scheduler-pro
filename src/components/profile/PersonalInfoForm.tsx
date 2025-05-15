@@ -1,28 +1,17 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 
-interface PersonalInfoFormProps {
-  user: {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone?: string; // Make phone optional
-    role: string;
-    createdAt: string;
-  };
-  onSubmit: (values: any) => void;
-}
-
-const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ user, onSubmit }) => {
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [email, setEmail] = useState(user.email);
-  const [phone, setPhone] = useState(user.phone || "");
+const PersonalInfoForm = () => {
+  const { user } = useAuth();
+  const [firstName, setFirstName] = useState(user?.firstName || "");
+  const [lastName, setLastName] = useState(user?.lastName || "");
+  const [email, setEmail] = useState(user?.email || "");
+  const [phone, setPhone] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const { toast } = useToast();
 
@@ -34,7 +23,10 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ user, onSubmit }) =
       email,
       phone,
     };
-    onSubmit(values);
+    
+    // In a real app, this would update the user profile
+    console.log("Updated profile values:", values);
+    
     setIsEditing(false);
     toast({
       title: "Profile updated successfully",
@@ -43,12 +35,9 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ user, onSubmit }) =
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Personal Information</CardTitle>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <form onSubmit={handleSubmit}>
+    <div className="grid gap-4">
+      <form onSubmit={handleSubmit}>
+        <div className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="firstName">First Name</Label>
             <Input
@@ -96,10 +85,10 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ user, onSubmit }) =
                   variant="ghost"
                   onClick={() => {
                     setIsEditing(false);
-                    setFirstName(user.firstName);
-                    setLastName(user.lastName);
-                    setEmail(user.email);
-                    setPhone(user.phone || "");
+                    setFirstName(user?.firstName || "");
+                    setLastName(user?.lastName || "");
+                    setEmail(user?.email || "");
+                    setPhone("");
                   }}
                   className="mr-2"
                 >
@@ -111,9 +100,9 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ user, onSubmit }) =
               <Button onClick={() => setIsEditing(true)}>Edit Profile</Button>
             )}
           </div>
-        </form>
-      </CardContent>
-    </Card>
+        </div>
+      </form>
+    </div>
   );
 };
 

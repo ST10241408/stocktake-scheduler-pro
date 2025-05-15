@@ -1,20 +1,9 @@
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@/context/AuthContext";
 import { CheckCircle2 } from "lucide-react";
-
-interface ProfileSummaryProps {
-  user: {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    role: string;
-    avatar?: string; // Make avatar optional
-    createdAt: string;
-  };
-}
 
 const ProfileSummary = () => {
   const { user } = useAuth();
@@ -22,7 +11,7 @@ const ProfileSummary = () => {
   return (
     <div className="flex flex-col items-center text-center pt-2">
       <Avatar className="w-24 h-24">
-        <AvatarImage src={user?.avatar as string} />
+        <AvatarImage src="" />
         <AvatarFallback className="text-2xl bg-primary/10">
           {user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
         </AvatarFallback>
